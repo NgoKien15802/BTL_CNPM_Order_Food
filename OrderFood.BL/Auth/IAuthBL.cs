@@ -14,5 +14,7 @@ namespace OrderFood.BL.Auth
     public interface IAuthBL
     {
         public Task<ServiceResponse<User>> Login(LoginRequestDto loginRequestDto, HttpContext httpContext);
+
+        public Task<ServiceResponse<User>> Register(RegisterRequestDto registrationRequestDto);
     }
 }
