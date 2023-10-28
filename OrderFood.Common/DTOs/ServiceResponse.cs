@@ -10,6 +10,8 @@ namespace OrderFood.Common.DTOs
     {
         public bool Success { get; set; }
         public T? Data { get; set; }
+        public string Message { get; set; }
+
         public List<T>? Datas { get; set; }
     }
 }
