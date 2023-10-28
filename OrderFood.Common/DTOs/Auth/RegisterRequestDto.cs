@@ -3,34 +3,34 @@ using OrderFood.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OrderFood.Common.DTOs.Auth
 {
-    public class UserDto
+    public class RegisterRequestDto
     {
-
-        
-        public Guid UserId { get; set; }
+        [Required(ErrorMessage = "FullName không được để trống.")]
         public string FullName { get; set; }
 
 
+        [Required(ErrorMessage = "Username không được để trống.")]
         public string Username { get; set; }
 
+        [Required(ErrorMessage = "Password không được để trống.")]
+        public string PasswordHash { get; set; }
 
+        [Required(ErrorMessage = "Email không được để trống.")]
         public string Email { get; set; }
 
+        [Phone(ErrorMessage = "PhoneNumber không đúng định dạng.")]
         public string PhoneNumber { get; set; }
 
         public string? Address { get; set; }
 
-        public string? Avatar { get; set; }
 
         public Gender? Gender { get; set; }
-
-        public string? token { get; set; }
-
     }
 }

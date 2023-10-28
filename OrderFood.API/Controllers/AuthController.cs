@@ -9,7 +9,7 @@ using System.Text;
 
 namespace OrderFood.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -30,6 +30,18 @@ namespace OrderFood.API.Controllers
                 return BadRequest(loginResponse);
             }
             return Ok(loginResponse);
+        }
+
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterRequestDto request)
+        {
+            var registerResponse = await _authBL.Register(request);
+            if (registerResponse.Success == false)
+            {
+                return BadRequest(registerResponse);
+            }
+            return Ok(registerResponse);
         }
     }
 }
