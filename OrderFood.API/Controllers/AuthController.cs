@@ -1,5 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using OrderFood.BL.Auth;
+using OrderFood.Common.DTOs.Auth;
+using OrderFood.Common.Models;
+using System.Security.Claims;
+using System.Text;
 
 namespace OrderFood.API.Controllers
 {
@@ -7,10 +13,23 @@ namespace OrderFood.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> getAll()
+        private readonly IAuthBL _authBL;
+
+        public AuthController(IAuthBL authBL)
         {
-            return Ok();
+            _authBL = authBL;
+        }
+
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginRequestDto request)
+        {
+            var loginResponse = await _authBL.Login(request, HttpContext);
+            if (loginResponse.Success == false)
+            {
+                return BadRequest(loginResponse);
+            }
+            return Ok(loginResponse);
         }
     }
 }
