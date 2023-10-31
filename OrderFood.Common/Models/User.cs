@@ -11,7 +11,6 @@ namespace OrderFood.Common.Models
 
         public string FullName { get; set; }
 
-
         public string Username { get; set; } 
 
         public string PasswordHash { get; set; }
@@ -27,7 +26,7 @@ namespace OrderFood.Common.Models
         public Gender? Gender { get; set; } = Enums.Gender.Male;
 
         [NotMapped]
-        public string? token { get; set; }
+        public string? Token { get; set; }
 
         [ForeignKey("Role")]
         public Guid? RoleId { get; set; }
