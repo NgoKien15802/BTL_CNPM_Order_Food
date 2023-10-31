@@ -1,31 +1,21 @@
-﻿using BCrypt.Net;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using OrderFood.Common.Constants;
 using OrderFood.Common.DTOs;
-using OrderFood.Common.DTOs.Auth;
 using OrderFood.Common.Models;
-using OrderFood.DL.Auth;
-using OrderFood.DL.Data;
-using System;
-using System.Collections.Generic;
+using OrderFood.DL;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace OrderFood.BL.Auth
+namespace OrderFood.BL
 {
     public class AuthBL : IAuthBL
     { 
         private readonly IAuthDL _authDL;
         private readonly IConfiguration _config;
-
 
         ServiceResponse<User> _serviceResponse = new ServiceResponse<User>();
 

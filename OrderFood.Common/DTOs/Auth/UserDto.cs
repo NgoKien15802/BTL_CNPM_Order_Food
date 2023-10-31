@@ -1,24 +1,14 @@
 ﻿using OrderFood.Common.Enums;
-using OrderFood.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OrderFood.Common.DTOs.Auth
+namespace OrderFood.Common.DTOs
 {
     public class UserDto
     {
-
-        
         public Guid UserId { get; set; }
+
         public string FullName { get; set; }
 
-
         public string Username { get; set; }
-
 
         public string Email { get; set; }
 

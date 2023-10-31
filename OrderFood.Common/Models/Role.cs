@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace OrderFood.Common.Models
 {
@@ -11,7 +6,6 @@ namespace OrderFood.Common.Models
     {
         [Key]
         public Guid RoleId { get; set; } = Guid.NewGuid();
-
 
         [Required(ErrorMessage = "RoleName không được để trống.")]
         public string RoleName { get; set; } = "User";

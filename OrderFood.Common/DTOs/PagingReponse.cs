@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderFood.Common.DTOs
+﻿namespace OrderFood.Common.DTOs
 {
     public class PagingReponse<T>
     {

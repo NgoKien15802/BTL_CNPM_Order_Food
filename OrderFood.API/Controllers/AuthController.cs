@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using OrderFood.BL.Auth;
-using OrderFood.Common.DTOs.Auth;
-using OrderFood.Common.Models;
-using System.Security.Claims;
-using System.Text;
+﻿using Microsoft.AspNetCore.Mvc;
+using OrderFood.BL;
+using OrderFood.Common.DTOs;
 
 namespace OrderFood.API.Controllers
 {
@@ -25,7 +20,7 @@ namespace OrderFood.API.Controllers
         public async Task<IActionResult> Login(LoginRequestDto request)
         {
             var loginResponse = await _authBL.Login(request, HttpContext);
-            if (loginResponse.Success == false)
+            if (!loginResponse.Success)
             {
                 return BadRequest(loginResponse);
             }
@@ -37,7 +32,7 @@ namespace OrderFood.API.Controllers
         public async Task<IActionResult> Register(RegisterRequestDto request)
         {
             var registerResponse = await _authBL.Register(request);
-            if (registerResponse.Success == false)
+            if (!registerResponse.Success)
             {
                 return BadRequest(registerResponse);
             }
