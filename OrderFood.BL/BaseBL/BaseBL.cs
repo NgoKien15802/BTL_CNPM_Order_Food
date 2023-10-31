@@ -1,11 +1,6 @@
-﻿using OrderFood.DL.BaseDL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OrderFood.DL;
 
-namespace OrderFood.BL.BaseBL
+namespace OrderFood.BL
 {
     public class BaseBL<T> : IBaseBL<T>
     {

@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using OrderFood.BL.Auth;
-using OrderFood.BL.BaseBL;
-using OrderFood.DL.Auth;
-using OrderFood.DL.BaseDL;
-using OrderFood.DL.Data;
+using OrderFood.BL;
+using OrderFood.DL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,22 +13,21 @@ builder.Services.AddScoped(typeof(IBaseDL<>), typeof(BaseDL<>));
 builder.Services.AddScoped<IAuthDL, AuthDL>();
 builder.Services.AddScoped<IAuthBL, AuthBL>();
 
-// add DB context
-
+// Add DB context
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddCors(p => p.AddPolicy("MyCors", build =>
 {
     build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
 }));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

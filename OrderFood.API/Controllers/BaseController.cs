@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using OrderFood.BL.BaseBL;
+﻿using Microsoft.AspNetCore.Mvc;
+using OrderFood.BL;
 
 namespace OrderFood.API.Controllers
 {
@@ -25,7 +24,7 @@ namespace OrderFood.API.Controllers
 
         #region GET
         [HttpGet("GetAll")]
-        public async Task<IActionResult> getAll()
+        public async Task<IActionResult> GetAll()
         {
             return Ok();
         }
