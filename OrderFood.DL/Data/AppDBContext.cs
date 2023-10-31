@@ -11,9 +11,15 @@ namespace OrderFood.DL
         }
 
         public DbSet<User> Users { get; set; }
-
         public DbSet<Role> Roles { get; set; }
-
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<PaymentOrder> PaymentOrders { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Category> Categorys { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<FoodImage> FoodImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
