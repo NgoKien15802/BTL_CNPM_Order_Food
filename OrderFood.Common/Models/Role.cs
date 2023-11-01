@@ -7,7 +7,6 @@ namespace OrderFood.Common.Models
         [Key]
         public Guid RoleId { get; set; } = Guid.NewGuid();
 
-        [Required(ErrorMessage = "RoleName không được để trống.")]
         public string RoleName { get; set; } = "User";
     }
 }

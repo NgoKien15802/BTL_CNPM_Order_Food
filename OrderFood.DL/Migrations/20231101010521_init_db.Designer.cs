@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderFood.DL;
 
@@ -11,9 +12,10 @@ using OrderFood.DL;
 namespace OrderFood.DL.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231101010521_init_db")]
+    partial class init_db
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,6 @@ namespace OrderFood.DL.Migrations
 
                     b.HasKey("BillId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Bills");
                 });
 
@@ -78,10 +78,6 @@ namespace OrderFood.DL.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.HasIndex("FoodId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Carts");
                 });
@@ -146,8 +142,6 @@ namespace OrderFood.DL.Migrations
 
                     b.HasKey("FoodId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Foods");
                 });
 
@@ -181,8 +175,6 @@ namespace OrderFood.DL.Migrations
 
                     b.HasKey("FoodImageId");
 
-                    b.HasIndex("FoodId");
-
                     b.ToTable("FoodImages");
                 });
 
@@ -211,8 +203,6 @@ namespace OrderFood.DL.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("OrderId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Orders");
                 });
@@ -265,10 +255,6 @@ namespace OrderFood.DL.Migrations
 
                     b.Property<Guid>("PaymentId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("PaymentId");
 
                     b.ToTable("PaymentOrders");
                 });
@@ -356,88 +342,6 @@ namespace OrderFood.DL.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.Bill", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.Cart", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.Food", "Food")
-                        .WithMany()
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OrderFood.Common.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Food");
-
-                    b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.Food", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.FoodImage", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.Food", "Food")
-                        .WithMany()
-                        .HasForeignKey("FoodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Food");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.Order", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.PaymentOrder", b =>
-                {
-                    b.HasOne("OrderFood.Common.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OrderFood.Common.Models.Payment", "Payment")
-                        .WithMany()
-                        .HasForeignKey("PaymentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Payment");
                 });
 
             modelBuilder.Entity("OrderFood.Common.Models.User", b =>

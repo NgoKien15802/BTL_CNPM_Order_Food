@@ -28,6 +28,9 @@ namespace OrderFood.DL
                .HasOne(u => u.Role)
                .WithMany()
                .HasForeignKey(u => u.RoleId);
-                }
+            modelBuilder.Entity<Cart>().HasNoKey();
+            modelBuilder.Entity<PaymentOrder>().HasNoKey();
+        }
+
     }
 }
