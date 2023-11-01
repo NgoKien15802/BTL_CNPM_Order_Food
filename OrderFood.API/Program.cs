@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(p => p.AddPolicy("MyCors", build =>
 {
-    build.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    build.WithOrigins("http://127.0.0.1:5173").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
 }));
 
 var app = builder.Build();
