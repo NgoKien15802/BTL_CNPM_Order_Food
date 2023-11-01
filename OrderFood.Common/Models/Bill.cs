@@ -13,7 +13,6 @@ namespace OrderFood.Common.Models
 
         public User User { get; set; }
 
-
         public int Status { get; set; }
 
         public double Total { get; set; }

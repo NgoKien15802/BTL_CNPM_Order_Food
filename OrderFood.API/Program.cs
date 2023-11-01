@@ -1,8 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OrderFood.BL;
-using OrderFood.BL.FoodBL;
 using OrderFood.DL;
-using OrderFood.DL.FoodDL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,10 +21,10 @@ builder.Services.AddDbContext<AppDBContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// CORS
 builder.Services.AddCors(p => p.AddPolicy("MyCors", build =>
 {
     build.WithOrigins("http://127.0.0.1:5173").AllowAnyMethod().AllowAnyHeader().AllowCredentials();
@@ -42,7 +40,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseCors("MyCors");
 app.UseAuthorization();
 app.MapControllers();
