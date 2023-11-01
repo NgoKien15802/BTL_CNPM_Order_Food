@@ -11,6 +11,8 @@ namespace OrderFood.Common.Models
         [ForeignKey("User")]
         public Guid UserId { get; set; }
 
+        public User User { get; set; }
+
         public DateTime PickupDate { get; set; }
     }
 }
