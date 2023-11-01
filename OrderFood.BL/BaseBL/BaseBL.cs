@@ -1,5 +1,4 @@
 ﻿using OrderFood.Common.DTOs;
-using OrderFood.Common.Models;
 using OrderFood.DL;
 
 namespace OrderFood.BL
@@ -11,7 +10,6 @@ namespace OrderFood.BL
         private IBaseDL<T> _baseDL;
         ServiceResponse<T> _serviceResponse = new ServiceResponse<T>();
 
-
         #endregion
 
         #region Constructor
@@ -20,8 +18,6 @@ namespace OrderFood.BL
         {
             this._baseDL = baseDL;
         }
-
-
 
         #endregion
 

@@ -9,7 +9,7 @@ namespace OrderFood.DL
     {
         private readonly AppDBContext _dbContext;
 
-        public AuthDL(AppDBContext dbContext, IConfiguration configuration):base(configuration)
+        public AuthDL(AppDBContext dbContext, IConfiguration configuration) : base(configuration)
         {
             _dbContext = dbContext;
         }
@@ -28,8 +28,8 @@ namespace OrderFood.DL
         {
             var roles = await (from u in _dbContext.Users
                                join r in _dbContext.Roles on u.RoleId equals r.RoleId
-                               select r.RoleName).ToListAsync(); 
-            return roles; 
+                               select r.RoleName).ToListAsync();
+            return roles;
         }
         public async Task<bool> CheckEmailExists(string email)
         {
@@ -75,6 +75,5 @@ namespace OrderFood.DL
                 return ex.Message;
             }
         }
-
     }
 }
