@@ -8,12 +8,10 @@ namespace OrderFood.DL
     public class AuthDL : BaseDL<User>, IAuthDL
     {
         private readonly AppDBContext _dbContext;
-        private readonly IConfiguration _config;
 
-        public AuthDL(AppDBContext dbContext, IConfiguration configuration)
+        public AuthDL(AppDBContext dbContext, IConfiguration configuration):base(configuration)
         {
             _dbContext = dbContext;
-            _config = configuration;
         }
 
         public async Task<User> CheckLogin(LoginRequestDto loginRequestDto)

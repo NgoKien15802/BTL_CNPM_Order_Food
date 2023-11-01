@@ -23,10 +23,15 @@ namespace OrderFood.API.Controllers
         #endregion
 
         #region GET
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        [HttpGet("GetAllRecord")]
+        public async Task<IActionResult> GetAllRecord()
         {
-            return Ok();
+            var loginResponse = await _baseBL.GetAllRecord();
+            if (!loginResponse.Success)
+            {
+                return BadRequest(loginResponse);
+            }
+            return Ok(loginResponse);
         }
 
         #endregion
