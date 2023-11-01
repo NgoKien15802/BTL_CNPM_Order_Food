@@ -18,7 +18,7 @@ namespace OrderFood.DL
         public BaseDL(IConfiguration configuration)
         {
             _configuration = configuration;
-            _tableName = $"{typeof(T).Name}s";
+            _tableName = $"{typeof(T).Name}";
         }
 
         public IDbConnection GetOpenConnection()
@@ -94,7 +94,7 @@ namespace OrderFood.DL
         {
             using (var connection = GetOpenConnection())
             {
-                string sql = $"SELECT * FROM {_tableName}";
+                string sql = $"SELECT * FROM View{_tableName}";
                 return await connection.QueryAsync<T>(sql);
             }
         }

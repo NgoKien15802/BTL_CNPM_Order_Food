@@ -15,8 +15,26 @@ namespace OrderFood.Common.Models
 
         public string FoodName { get; set; }
 
+        public float FoodStar { get; set; }
+
+        public string? FoodVote { get; set; }
+
+        public float? FoodDiscount { get; set; }
+
+        public string? FoodDesc { get; set; }
+
+        public string FoodStatus { get; set; }
+
+        public string FoodType { get; set; }
+
         public double Price { get; set; }
 
         public int Quantity { get; set; }
+
+        [NotMapped]
+        public string? Name { get; set; }
+
+        [NotMapped]
+        public string? Url { get; set; }
     }
 }
