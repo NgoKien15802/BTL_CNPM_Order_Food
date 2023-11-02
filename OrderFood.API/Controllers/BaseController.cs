@@ -24,14 +24,25 @@ namespace OrderFood.API.Controllers
 
         #region GET
         [HttpGet("GetAllRecord")]
-        public async Task<IActionResult> GetAllRecord()
+        public async Task<IActionResult> GetAllRecord(string? recordId = "")
         {
-            var loginResponse = await _baseBL.GetAllRecord();
-            if (!loginResponse.Success)
+            var resultResponse = await _baseBL.GetAllRecord(recordId);
+            if (!resultResponse.Success)
             {
-                return BadRequest(loginResponse);
+                return BadRequest(resultResponse);
             }
-            return Ok(loginResponse);
+            return Ok(resultResponse);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById(Guid recordId)
+        {
+            var resultResponse = await _baseBL.GetById(recordId);
+            if (!resultResponse.Success)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
         }
 
         #endregion

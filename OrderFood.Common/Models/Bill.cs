@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrderFood.Common.Models
@@ -13,8 +13,25 @@ namespace OrderFood.Common.Models
 
         public User User { get; set; }
 
+
+        public string? Paid{ get; set; }
+
         public int Status { get; set; }
 
         public double Total { get; set; }
+
+        [NotMapped]
+        public string? Address { get; set; }
+        [NotMapped]
+        public string? PhoneNumber { get; set; }
+
+        [NotMapped]
+        public string? Method { get; set; }
+
+        [NotMapped]
+        public int? Discount { get; set; }
+
+        [NotMapped]
+        public int? Delivery { get; set; }
     }
 }
