@@ -26,9 +26,25 @@ namespace OrderFood.BL
         #endregion
 
         #region Methods
-        public async Task<ServiceResponse<T>> GetAllRecord()
+        public async Task<ServiceResponse<T>> GetAllRecord(string? recordId = "")
         {
-            var records = await _baseDL.GetAllRecord();
+            var records = await _baseDL.GetAllRecord(recordId);
+            if (records != null)
+            {
+                _serviceResponse.Success = true;
+                _serviceResponse.Data = records;
+            }
+            else
+            {
+                _serviceResponse.Success = false;
+            }
+            return _serviceResponse;
+        }
+
+
+        public async Task<ServiceResponse<T>> GetById(Guid recordId)
+        {
+            var records = await _baseDL.GetById(recordId);
             if (records != null)
             {
                 _serviceResponse.Success = true;

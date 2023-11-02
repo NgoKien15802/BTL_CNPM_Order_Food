@@ -10,6 +10,6 @@ namespace OrderFood.DL
         Task<bool> Update(T entity);
         public Task<bool> Delete(Guid recordId);
         public Task<T> GetById(Guid recordId);
-        public Task<IEnumerable<T>> GetAllRecord();
+        public Task<IEnumerable<T>> GetAllRecord(string? recordId = "");
     }
 }

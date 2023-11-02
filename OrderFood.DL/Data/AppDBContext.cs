@@ -13,6 +13,7 @@ namespace OrderFood.DL
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Bill> Bills { get; set; }
+        public DbSet<BillDetail> BillDetails { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<PaymentOrder> PaymentOrders { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -30,6 +31,7 @@ namespace OrderFood.DL
                .HasForeignKey(u => u.RoleId);
             modelBuilder.Entity<Cart>().HasNoKey();
             modelBuilder.Entity<PaymentOrder>().HasNoKey();
+            modelBuilder.Entity<BillDetail>().HasNoKey();
         }
 
     }

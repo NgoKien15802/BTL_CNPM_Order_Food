@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Xml.Linq;
 using static Dapper.SqlMapper;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace OrderFood.DL
 {
@@ -90,23 +91,39 @@ namespace OrderFood.DL
 
         }
 
-        public async Task<IEnumerable<T>> GetAllRecord()
+        public async Task<IEnumerable<T>> GetAllRecord(string? recordId = "")
         {
             using (var connection = GetOpenConnection())
             {
-                string sql = $"SELECT * FROM View{_tableName}";
-                return await connection.QueryAsync<T>(sql);
+                if (string.IsNullOrEmpty(recordId))
+                {
+                    string sql = $"SELECT * FROM View{_tableName}";
+                    return await connection.QueryAsync<T>(sql);
+                }
+                else
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Id", new Guid(recordId));
+                    return await connection.QueryAsync<T>(
+                        $"Get{_tableName}s",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+                }
             }
         }
 
-        public async Task<T> GetById(Guid recordId)
+        public virtual async Task<T> GetById(Guid recordId)
         {
-            using(var connection = GetOpenConnection())
+            using (var connection = GetOpenConnection())
             {
                 var parameters = new DynamicParameters();
-                parameters.Add("@recordId", recordId);
-                string sql = $"SELECT * FROM ${_tableName} WHERE {getRecordId()}Id = @recordId";
-                return await connection.QueryFirstOrDefaultAsync<T>(sql, parameters);
+                parameters.Add("@Id", recordId);
+                return await connection.QueryFirstOrDefaultAsync<T>(
+                    $"Get{_tableName}s",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
 

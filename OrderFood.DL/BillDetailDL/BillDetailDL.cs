@@ -1,16 +1,17 @@
 ﻿using Microsoft.Extensions.Configuration;
 using OrderFood.Common.Models;
+using OrderFood.DL.BillDL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderFood.DL.FoodDL
+namespace OrderFood.DL.BillDetailDL
 {
-    public class FoodDL : BaseDL<Food>, IFoodDL
+    public class BillDetailDL : BaseDL<BillDetail>, IBillDetailDL
     {
-        public FoodDL(IConfiguration configuration) : base(configuration)
+        public BillDetailDL(IConfiguration configuration) : base(configuration)
         {
 
         }
