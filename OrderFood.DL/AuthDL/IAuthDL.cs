@@ -7,7 +7,7 @@ namespace OrderFood.DL
     {
         public Task<User> CheckLogin(LoginRequestDto loginRequestDto);
 
-        public  Task<List<string>> GetRoles(User user);
+        public Task<List<string>> GetRoles(User user);
 
         public Task<bool> CheckEmailExists(string email);
 

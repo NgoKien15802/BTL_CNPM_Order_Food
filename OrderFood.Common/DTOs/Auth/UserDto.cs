@@ -20,7 +20,7 @@ namespace OrderFood.Common.DTOs
 
         public Gender? Gender { get; set; }
 
-        public string? token { get; set; }
+        public string? Token { get; set; }
 
     }
 }
