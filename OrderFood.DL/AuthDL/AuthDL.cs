@@ -28,8 +28,9 @@ namespace OrderFood.DL
         {
             var roles = await (from u in _dbContext.Users
                                join r in _dbContext.Roles on u.RoleId equals r.RoleId
-                               select r.RoleName).ToListAsync();
-            return roles;
+                               where r.RoleId == user.RoleId
+                               select r.RoleName).ToListAsync(); 
+            return roles; 
         }
         public async Task<bool> CheckEmailExists(string email)
         {
@@ -61,6 +62,9 @@ namespace OrderFood.DL
                 return success;
             }
         }
+
+
+
         public async Task<string> CreateUser(User user, Guid roleId)
         {
             try

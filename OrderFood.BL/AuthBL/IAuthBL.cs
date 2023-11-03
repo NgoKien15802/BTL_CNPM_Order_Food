@@ -4,7 +4,7 @@ using OrderFood.Common.Models;
 
 namespace OrderFood.BL
 {
-    public interface IAuthBL
+    public interface IAuthBL : IBaseBL<User>
     {
         public Task<ServiceResponse<User>> Login(LoginRequestDto loginRequestDto, HttpContext httpContext);
 
