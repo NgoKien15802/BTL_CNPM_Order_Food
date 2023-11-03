@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderFood.BL;
+using OrderFood.BL.BillBL;
 using OrderFood.Common.DTOs;
+using OrderFood.Common.Models;
 
 namespace OrderFood.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : BaseController<User>
     {
         private readonly IAuthBL _authBL;
 
-        public AuthController(IAuthBL authBL)
+        public AuthController(IAuthBL authBL) : base(authBL)
         {
             _authBL = authBL;
         }

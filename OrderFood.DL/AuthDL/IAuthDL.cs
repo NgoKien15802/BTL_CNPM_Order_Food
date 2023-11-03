@@ -9,6 +9,7 @@ namespace OrderFood.DL
 
         public  Task<List<string>> GetRoles(User user);
 
+
         public Task<bool> CheckEmailExists(string email);
 
         public Task<string> CreateUser(User user, string roleName);

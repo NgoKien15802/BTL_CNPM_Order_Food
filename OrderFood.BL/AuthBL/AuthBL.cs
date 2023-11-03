@@ -5,6 +5,7 @@ using OrderFood.Common.Constants;
 using OrderFood.Common.DTOs;
 using OrderFood.Common.Models;
 using OrderFood.DL;
+using OrderFood.DL.BillDL;
 using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -12,14 +13,14 @@ using System.Text;
 
 namespace OrderFood.BL
 {
-    public class AuthBL : IAuthBL
+    public class AuthBL : BaseBL<User>, IAuthBL
     { 
         private readonly IAuthDL _authDL;
         private readonly IConfiguration _config;
 
         ServiceResponse<User> _serviceResponse = new ServiceResponse<User>();
 
-        public AuthBL(IConfiguration configuration, IAuthDL authDL)
+        public AuthBL(IConfiguration configuration, IAuthDL authDL) : base(authDL)
         {
             _authDL = authDL;
             _config = configuration;
@@ -102,26 +103,35 @@ namespace OrderFood.BL
 
         private string CreateToken(User user, IEnumerable<string> roles)
         {
-            List<Claim> claims = new List<Claim> {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.GivenName, user.FullName)
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            // ký bằng khóa bí mật
+            var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Secret").Value);
+
+            // để xác thực, ủy quyền theo chuẩn cấu trúc của jwt 
+            var claimList = new List<Claim>
+            {
+                new Claim(JwtRegisteredClaimNames.Email,user?.Email),
+                new Claim(JwtRegisteredClaimNames.Sub,user?.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName,user?.FullName)
             };
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
-                _config.GetSection("AppSettings:Token").Value!));
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            // add roles
+            claimList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
-            var token = new JwtSecurityToken(
-                    claims: claims,
-                    expires: DateTime.Now.AddDays(1),
-                    signingCredentials: creds
-                );
+            //được sử dụng để cấu hình thông tin cho JWT.
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claimList),
+                Expires = DateTime.UtcNow.AddDays(1),
+                //Thông tin về cách JWT sẽ được ký. Ở đây, nó sử dụng HmacSha256Signature và sử dụng khóa bí mật
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            // trả về chuỗi jwt
 
-            return jwt;
+            return tokenHandler.WriteToken(token);
         }
     }
 }
