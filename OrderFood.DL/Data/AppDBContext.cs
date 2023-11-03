@@ -33,6 +33,5 @@ namespace OrderFood.DL
             modelBuilder.Entity<PaymentOrder>().HasNoKey();
             modelBuilder.Entity<BillDetail>().HasNoKey();
         }
-
     }
 }

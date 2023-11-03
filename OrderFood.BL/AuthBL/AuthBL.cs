@@ -49,7 +49,7 @@ namespace OrderFood.BL
             _serviceResponse.Success = true;
             _serviceResponse.Data = new UserDto()
             {
-                UserId=user.UserId,
+                UserId = user.UserId,
                 Username = user.Username,
                 FullName = user.FullName,
                 Email = user.Email,
@@ -57,7 +57,7 @@ namespace OrderFood.BL
                 Address = user.Address,
                 Avatar = user.Avatar,
                 Gender = user.Gender,
-                token = token
+                Token = token
             };
             return _serviceResponse;
         }

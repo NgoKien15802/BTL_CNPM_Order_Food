@@ -9,7 +9,7 @@ namespace OrderFood.DL
     {
         private readonly AppDBContext _dbContext;
 
-        public AuthDL(AppDBContext dbContext, IConfiguration configuration):base(configuration)
+        public AuthDL(AppDBContext dbContext, IConfiguration configuration) : base(configuration)
         {
             _dbContext = dbContext;
         }
@@ -79,6 +79,5 @@ namespace OrderFood.DL
                 return ex.Message;
             }
         }
-
     }
 }

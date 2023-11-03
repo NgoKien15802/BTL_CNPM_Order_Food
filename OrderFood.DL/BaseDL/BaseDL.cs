@@ -1,10 +1,8 @@
 ﻿using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using OrderFood.Common.Models;
 using System.Data;
 using System.Data.SqlClient;
-using System.Xml.Linq;
 using static Dapper.SqlMapper;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
@@ -12,7 +10,6 @@ namespace OrderFood.DL
 {
     public class BaseDL<T> : IBaseDL<T>
     {
-
         IConfiguration _configuration;
         private readonly string _tableName;
 
@@ -31,7 +28,7 @@ namespace OrderFood.DL
 
         public string getRecordId()
         {
-            return _tableName.Substring(0, _tableName.Length - 1); ;
+            return _tableName.Substring(0, _tableName.Length - 1);
         }
 
         public async Task<bool> Add(T entity)
@@ -46,20 +43,14 @@ namespace OrderFood.DL
                 }
 
                 if (rowAffect > 0)
-                {
                     return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
             catch (Exception)
             {
                 return false;
                 throw;
             }
-
         }
 
         public async Task<bool> Delete(Guid recordId)
@@ -75,20 +66,14 @@ namespace OrderFood.DL
                     rowAffect = await connection.ExecuteAsync(sql, parameters);
                 }
                 if (rowAffect > 0)
-                {
                     return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
             }
             catch (Exception)
             {
                 return false;
                 throw;
             }
-
         }
 
         public async Task<IEnumerable<T>> GetAllRecord(string? recordId = "")

@@ -1,4 +1,4 @@
-﻿using OrderFood.Common.DTOs;
+using OrderFood.Common.DTOs;
 using System.Data;
 
 namespace OrderFood.DL
