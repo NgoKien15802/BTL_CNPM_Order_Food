@@ -26,6 +26,35 @@ namespace OrderFood.BL
             _config = configuration;
         }
 
+        public bool checkRole(string jwt)
+        {
+            string secretKey = _config.GetSection("AppSettings:Secret").Value; 
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(secretKey);
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false, // Tùy chọn, kiểm tra Issuer nếu cần thiết
+                ValidateAudience = false, // Tùy chọn, kiểm tra Audience nếu cần thiết
+                ClockSkew = TimeSpan.Zero // Tùy chọn, đặt độ lệch thời gian
+            };
+
+            SecurityToken securityToken;
+            var principal = tokenHandler.ValidateToken(jwt, tokenValidationParameters, out securityToken);
+
+            // Bây giờ bạn có thể truy cập các thông tin trong JWT Token thông qua principal.Claims
+            foreach (var claim in principal.Claims)
+            {
+                if(claim.Value == SD.AdminRole)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public async Task<ServiceResponse<User>> Login(LoginRequestDto loginRequestDto, HttpContext httpContext)
         {
             var user = await _authDL.CheckLogin(loginRequestDto);

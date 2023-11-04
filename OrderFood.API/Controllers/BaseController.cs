@@ -45,6 +45,8 @@ namespace OrderFood.API.Controllers
             return Ok(resultResponse);
         }
 
+
+
         #endregion
 
         #region POST
@@ -56,6 +58,16 @@ namespace OrderFood.API.Controllers
         #endregion
 
         #region DELETE
+        [HttpDelete("{recordId}")]
+        public async Task<IActionResult> Delete(Guid recordId)
+        {
+            var resultResponse = await _baseBL.Delete(recordId);
+            if (!resultResponse.Success)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
+        }
 
         #endregion
     }

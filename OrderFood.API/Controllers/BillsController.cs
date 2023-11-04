@@ -1,4 +1,6 @@
-﻿using OrderFood.BL.BillBL;
+﻿using Microsoft.AspNetCore.Mvc;
+using OrderFood.BL.BillBL;
+using OrderFood.Common.DTOs;
 using OrderFood.Common.Models;
 
 namespace OrderFood.API.Controllers
@@ -10,6 +12,17 @@ namespace OrderFood.API.Controllers
         public BillsController(IBillBL billBL) : base(billBL)
         {
             _billBL = billBL;
+        }
+
+        [HttpGet("getBills")]
+        public IActionResult GetBills()
+        {
+            var loginResponse = _billBL.GetBills();
+            if (!loginResponse.Success)
+            {
+                return BadRequest(loginResponse);
+            }
+            return Ok(loginResponse);
         }
     }
 }

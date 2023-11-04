@@ -19,6 +19,21 @@ namespace OrderFood.BL
             this._baseDL = baseDL;
         }
 
+        public async Task<ServiceResponse<T>> Delete(Guid recordId)
+        {
+            bool records = await _baseDL.Delete(recordId);
+            if (records)
+            {
+                _serviceResponse.Success = true;
+                _serviceResponse.Data = records;
+            }
+            else
+            {
+                _serviceResponse.Success = false;
+            }
+            return _serviceResponse;
+        }
+
         #endregion
 
         #region Methods
