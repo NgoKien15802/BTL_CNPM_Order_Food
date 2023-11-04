@@ -9,5 +9,8 @@ namespace OrderFood.BL
         public Task<ServiceResponse<User>> Login(LoginRequestDto loginRequestDto, HttpContext httpContext);
 
         public Task<ServiceResponse<User>> Register(RegisterRequestDto registrationRequestDto);
+
+        public bool checkRole(string jwt);
+
     }
 }

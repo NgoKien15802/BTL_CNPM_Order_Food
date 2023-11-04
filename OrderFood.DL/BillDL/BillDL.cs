@@ -12,9 +12,16 @@ namespace OrderFood.DL.BillDL
 {
     public class BillDL : BaseDL<Bill>, IBillDL
     {
-        public BillDL(IConfiguration configuration) : base(configuration)
-        {
+        private readonly AppDBContext _dbContext;
 
+        public BillDL(IConfiguration configuration, AppDBContext dBContext) : base(configuration)
+        {
+            _dbContext = dBContext;
+        }
+
+        public List<Bill> GetBills()
+        {
+            return _dbContext.Bills.ToList();
         }
 
         public override async Task<Bill> GetById(Guid recordId)
@@ -28,7 +35,7 @@ namespace OrderFood.DL.BillDL
                     parameters,
                     commandType: CommandType.StoredProcedure
                 );
+            }
         }
-    }
     }
 }

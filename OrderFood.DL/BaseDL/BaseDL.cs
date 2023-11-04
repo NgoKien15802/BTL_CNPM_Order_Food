@@ -62,7 +62,7 @@ namespace OrderFood.DL
                 {
                     var parameters = new DynamicParameters();
                     parameters.Add("@recordId", recordId);
-                    string sql = $"DELETE FROM {_tableName} WHERE {getRecordId()}Id = @recordId";
+                    string sql = $"DELETE FROM {_tableName}s WHERE {_tableName}Id = @recordId";
                     rowAffect = await connection.ExecuteAsync(sql, parameters);
                 }
                 if (rowAffect > 0)

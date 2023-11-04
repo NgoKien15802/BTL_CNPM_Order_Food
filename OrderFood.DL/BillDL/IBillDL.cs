@@ -9,5 +9,6 @@ namespace OrderFood.DL.BillDL
 {
     public interface IBillDL : IBaseDL<Bill>
     {
+        public List<Bill> GetBills();
     }
 }

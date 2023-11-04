@@ -40,5 +40,16 @@ namespace OrderFood.API.Controllers
             }
             return Ok(registerResponse);
         }
+
+        [HttpPost("CheckRole")]
+        public  IActionResult CheckRole(string jwt)
+        {
+            bool registerResponse = _authBL.checkRole(jwt);
+            if (!registerResponse)
+            {
+                return BadRequest(registerResponse);
+            }
+            return Ok(registerResponse);
+        }
     }
 }
