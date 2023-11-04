@@ -10,5 +10,9 @@ namespace OrderFood.BL
 
         public Task<ServiceResponse<T>> Delete(Guid recordId);
 
+        public ServiceResponse<T> Add(T record);
+
+        public ServiceResponse<T> Update(T record);
+
     }
 }
