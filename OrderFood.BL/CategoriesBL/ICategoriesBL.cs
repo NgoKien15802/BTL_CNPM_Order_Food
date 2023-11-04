@@ -2,7 +2,7 @@
 
 namespace OrderFood.BL
 {
-    public interface IBillDetailBL : IBaseBL<BillDetail>
+    public interface ICategoriesBL : IBaseBL<Category>
     {
     }
 }
