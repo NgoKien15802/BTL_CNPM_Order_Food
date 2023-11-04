@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OrderFood.BL.BillBL;
-using OrderFood.Common.DTOs;
+using OrderFood.BL;
 using OrderFood.Common.Models;
 
 namespace OrderFood.API.Controllers

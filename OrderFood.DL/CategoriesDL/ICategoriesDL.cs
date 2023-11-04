@@ -2,7 +2,7 @@
 
 namespace OrderFood.DL
 {
-    public interface IBillDetailDL : IBaseDL<BillDetail>
+    public interface ICategoriesDL : IBaseDL<Category>
     {
     }
 }

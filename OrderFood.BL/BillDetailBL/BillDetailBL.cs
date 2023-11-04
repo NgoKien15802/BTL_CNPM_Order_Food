@@ -1,13 +1,7 @@
-﻿using OrderFood.Common.DTOs;
-using OrderFood.Common.Models;
-using OrderFood.DL.BillDetailDL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OrderFood.Common.Models;
+using OrderFood.DL;
 
-namespace OrderFood.BL.BillDetailBL
+namespace OrderFood.BL
 {
     public class BillDetailBL : BaseBL<BillDetail>, IBillDetailBL
     {
@@ -17,6 +11,5 @@ namespace OrderFood.BL.BillDetailBL
         {
             _billDetailDL = billDetailDL;
         }
-
     }
 }

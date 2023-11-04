@@ -1,13 +1,8 @@
 ﻿using OrderFood.Common.DTOs;
 using OrderFood.Common.Models;
-using OrderFood.DL.BillDL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OrderFood.DL;
 
-namespace OrderFood.BL.BillBL
+namespace OrderFood.BL
 {
     public class BillBL : BaseBL<Bill>, IBillBL
     {

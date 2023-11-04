@@ -1,14 +1,9 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
 using OrderFood.Common.Models;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OrderFood.DL.BillDL
+namespace OrderFood.DL
 {
     public class BillDL : BaseDL<Bill>, IBillDL
     {
