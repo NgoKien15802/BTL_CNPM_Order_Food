@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.24" />
+    <Compile Remove="DTOs\Food\**" />
+    <EmbeddedResource Remove="DTOs\Food\**" />
+    <None Remove="DTOs\Food\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Food\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.24" />
   </ItemGroup>
 
 </Project>
