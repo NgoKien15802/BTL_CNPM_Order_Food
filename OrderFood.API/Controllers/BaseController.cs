@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderFood.BL;
+using OrderFood.Common.Enums;
 
 namespace OrderFood.API.Controllers
 {
@@ -22,7 +23,8 @@ namespace OrderFood.API.Controllers
 
         #endregion
 
-        #region GET
+
+
         [HttpGet("GetAllRecord")]
         public async Task<IActionResult> GetAllRecord(string? recordId = "")
         {
@@ -47,17 +49,29 @@ namespace OrderFood.API.Controllers
 
 
 
-        #endregion
+        [HttpPost("addRecord")]
+        public IActionResult Add([FromBody] T record)
+        {
+            var resultResponse = _baseBL.Add(record);
+            if (resultResponse.Success == false)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
+        }
 
-        #region POST
+        [HttpPut("updateRecord")]
+        public IActionResult Update([FromBody] T record)
+        {
+            var resultResponse = _baseBL.Update(record);
+            if (resultResponse.Success == false)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
+        }
 
-        #endregion
 
-        #region PUT
-
-        #endregion
-
-        #region DELETE
         [HttpDelete("deleteById/{recordId}")]
         public async Task<IActionResult> Delete(Guid recordId)
         {
@@ -69,6 +83,8 @@ namespace OrderFood.API.Controllers
             return Ok(resultResponse);
         }
 
-        #endregion
+
+
+
     }
 }

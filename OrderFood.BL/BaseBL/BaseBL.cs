@@ -12,12 +12,31 @@ namespace OrderFood.BL
 
         #endregion
 
+
+
         #region Constructor
 
         public BaseBL(IBaseDL<T> baseDL)
         {
             this._baseDL = baseDL;
         }
+
+
+        public ServiceResponse<T> Add(T record)
+        {
+            int numberEmployeeOfAffected = _baseDL.Add(record);
+            if (numberEmployeeOfAffected > 0)
+            {
+                _serviceResponse.Success = true;
+                _serviceResponse.Data = 1;
+            }
+            else
+            {
+                _serviceResponse.Success = false;
+            }
+            return _serviceResponse;
+        }
+
 
         public async Task<ServiceResponse<T>> Delete(Guid recordId)
         {
@@ -60,6 +79,21 @@ namespace OrderFood.BL
             {
                 _serviceResponse.Success = true;
                 _serviceResponse.Data = records;
+            }
+            else
+            {
+                _serviceResponse.Success = false;
+            }
+            return _serviceResponse;
+        }
+
+        public ServiceResponse<T> Update(T record)
+        {
+            int numberEmployeeOfAffected = _baseDL.Update(record);
+            if (numberEmployeeOfAffected > 0)
+            {
+                _serviceResponse.Success = true;
+                _serviceResponse.Data = 1;
             }
             else
             {

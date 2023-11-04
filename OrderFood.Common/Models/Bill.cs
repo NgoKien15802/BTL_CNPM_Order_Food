@@ -11,7 +11,7 @@ namespace OrderFood.Common.Models
         [ForeignKey("User")]
         public Guid UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
 
         public string? Paid{ get; set; }
@@ -25,13 +25,10 @@ namespace OrderFood.Common.Models
         [NotMapped]
         public string? PhoneNumber { get; set; }
 
-        [NotMapped]
         public string? Method { get; set; }
 
-        [NotMapped]
         public int? Discount { get; set; }
 
-        [NotMapped]
         public int? Delivery { get; set; }
     }
 }

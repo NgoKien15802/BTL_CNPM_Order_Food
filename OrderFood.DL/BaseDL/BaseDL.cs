@@ -31,24 +31,37 @@ namespace OrderFood.DL
             return _tableName.Substring(0, _tableName.Length - 1);
         }
 
-        public async Task<bool> Add(T entity)
+        public int Add(T record)
         {
             try
             {
                 dynamic rowAffect;
                 using (var connection = GetOpenConnection())
                 {
-                    string sql = $"UPDATE {_tableName} SET Property1 = @Property1, Property2 = @Property2, ... WHERE Id = @Id";
-                    rowAffect = await connection.ExecuteAsync(sql, entity);
-                }
+                    string storedProcedureName = $"Add{_tableName}";
 
-                if (rowAffect > 0)
-                    return true;
-                return false;
+                    var parameters = new DynamicParameters();
+
+                    var properties = typeof(T).GetProperties();
+                    foreach (var property in properties)
+                    {
+                        var propertyName = property.Name;
+                        var propertyValue = property.GetValue(record);
+                        if(propertyValue != null)
+                        {
+                            parameters.Add($"@{propertyName}", propertyValue);
+                        }
+                    }
+
+
+                    // thực hiện câu lệnh sql 
+                    int numberAffected =  connection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                    return numberAffected;
+                }
             }
             catch (Exception)
             {
-                return false;
+                return 0;
                 throw;
             }
         }
@@ -112,9 +125,39 @@ namespace OrderFood.DL
             }
         }
 
-        public async Task<bool> Update(T entity)
+        public int Update(T record)
         {
-            throw new NotImplementedException();
+            try
+            {
+                dynamic rowAffect;
+                using (var connection = GetOpenConnection())
+                {
+                    string storedProcedureName = $"Update{_tableName}";
+
+                    var parameters = new DynamicParameters();
+
+                    var properties = typeof(T).GetProperties();
+                    foreach (var property in properties)
+                    {
+                        var propertyName = property.Name;
+                        var propertyValue = property.GetValue(record);
+                        if (propertyValue != null)
+                        {
+                            parameters.Add($"@{propertyName}", propertyValue);
+                        }
+                    }
+
+
+                    // thực hiện câu lệnh sql 
+                    int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                    return numberAffected;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
         }
     }
 }
