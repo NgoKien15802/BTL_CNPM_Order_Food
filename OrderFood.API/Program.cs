@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using OrderFood.BL;
+using OrderFood.BL.OrderBL;
 using OrderFood.BL.RoleBL;
 using OrderFood.DL;
+using OrderFood.DL.OrderDL;
 using OrderFood.DL.RoleDL;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +26,8 @@ builder.Services.AddScoped<ICategoriesBL, CategoriesBL>();
 builder.Services.AddScoped<ICategoriesDL, CategoriesDL>();
 builder.Services.AddScoped<IRoleBL, RoleBL>();
 builder.Services.AddScoped<IRoleDL, RoleDL>();
-
+builder.Services.AddScoped<IOrderBL, OrderBL>();
+builder.Services.AddScoped<IOrderDL, OrderDL>();
 // Add DB context
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
