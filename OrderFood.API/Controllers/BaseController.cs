@@ -58,7 +58,7 @@ namespace OrderFood.API.Controllers
         #endregion
 
         #region DELETE
-        [HttpDelete("{recordId}")]
+        [HttpDelete("deleteById/{recordId}")]
         public async Task<IActionResult> Delete(Guid recordId)
         {
             var resultResponse = await _baseBL.Delete(recordId);
