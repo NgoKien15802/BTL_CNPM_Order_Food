@@ -16,7 +16,6 @@ namespace OrderFood.API.Controllers
             _authBL = authBL;
         }
 
-
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginRequestDto request)
         {
@@ -27,7 +26,6 @@ namespace OrderFood.API.Controllers
             }
             return Ok(loginResponse);
         }
-
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterRequestDto request)
@@ -41,7 +39,7 @@ namespace OrderFood.API.Controllers
         }
 
         [HttpPost("CheckRole")]
-        public  IActionResult CheckRole(string jwt)
+        public IActionResult CheckRole(string jwt)
         {
             bool registerResponse = _authBL.checkRole(jwt);
             if (!registerResponse)

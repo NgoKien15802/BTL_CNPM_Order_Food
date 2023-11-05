@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using static Dapper.SqlMapper;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace OrderFood.DL
 {
@@ -35,27 +34,25 @@ namespace OrderFood.DL
         {
             try
             {
-                dynamic rowAffect;
                 using (var connection = GetOpenConnection())
                 {
                     string storedProcedureName = $"Add{_tableName}";
-
                     var parameters = new DynamicParameters();
-
                     var properties = typeof(T).GetProperties();
+
                     foreach (var property in properties)
                     {
                         var propertyName = property.Name;
                         var propertyValue = property.GetValue(record);
-                        if(propertyValue != null)
+                        if (propertyValue != null)
                         {
                             parameters.Add($"@{propertyName}", propertyValue);
                         }
                     }
 
-
                     // thực hiện câu lệnh sql 
-                    int numberAffected =  connection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                    int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
                     return numberAffected;
                 }
             }
@@ -78,6 +75,7 @@ namespace OrderFood.DL
                     string sql = $"DELETE FROM {_tableName}s WHERE {_tableName}Id = @recordId";
                     rowAffect = await connection.ExecuteAsync(sql, parameters);
                 }
+
                 if (rowAffect > 0)
                     return true;
                 return false;
@@ -102,6 +100,7 @@ namespace OrderFood.DL
                 {
                     var parameters = new DynamicParameters();
                     parameters.Add("@Id", new Guid(recordId));
+
                     return await connection.QueryAsync<T>(
                         $"Get{_tableName}s",
                         parameters,
@@ -117,11 +116,13 @@ namespace OrderFood.DL
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Id", recordId);
-                return await connection.QueryFirstOrDefaultAsync<T>(
+                var result = await connection.QueryFirstOrDefaultAsync<T>(
                     $"Get{_tableName}s",
                     parameters,
                     commandType: CommandType.StoredProcedure
                 );
+
+                return result;
             }
         }
 
@@ -129,14 +130,12 @@ namespace OrderFood.DL
         {
             try
             {
-                dynamic rowAffect;
                 using (var connection = GetOpenConnection())
                 {
                     string storedProcedureName = $"Update{_tableName}";
-
                     var parameters = new DynamicParameters();
-
                     var properties = typeof(T).GetProperties();
+
                     foreach (var property in properties)
                     {
                         var propertyName = property.Name;
@@ -147,9 +146,9 @@ namespace OrderFood.DL
                         }
                     }
 
-
                     // thực hiện câu lệnh sql 
-                    int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                    int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
                     return numberAffected;
                 }
             }

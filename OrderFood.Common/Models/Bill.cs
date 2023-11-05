@@ -13,7 +13,7 @@ namespace OrderFood.Common.Models
 
         public User? User { get; set; }
 
-        public string? Paid{ get; set; }
+        public string? Paid { get; set; }
 
         public int Status { get; set; }
 

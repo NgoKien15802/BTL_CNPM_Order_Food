@@ -12,15 +12,12 @@ namespace OrderFood.BL
 
         #endregion
 
-
-
         #region Constructor
 
         public BaseBL(IBaseDL<T> baseDL)
         {
             this._baseDL = baseDL;
         }
-
 
         public ServiceResponse<T> Add(T record)
         {
@@ -36,7 +33,6 @@ namespace OrderFood.BL
             }
             return _serviceResponse;
         }
-
 
         public async Task<ServiceResponse<T>> Delete(Guid recordId)
         {
@@ -71,7 +67,6 @@ namespace OrderFood.BL
             return _serviceResponse;
         }
 
-
         public async Task<ServiceResponse<T>> GetById(Guid recordId)
         {
             var records = await _baseDL.GetById(recordId);
@@ -86,7 +81,6 @@ namespace OrderFood.BL
             }
             return _serviceResponse;
         }
-
         public ServiceResponse<T> Update(T record)
         {
             int numberEmployeeOfAffected = _baseDL.Update(record);

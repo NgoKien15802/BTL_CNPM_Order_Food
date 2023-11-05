@@ -7,7 +7,6 @@ namespace OrderFood.DL
     {
         public BillDetailDL(IConfiguration configuration) : base(configuration)
         {
-
         }
     }
 }
