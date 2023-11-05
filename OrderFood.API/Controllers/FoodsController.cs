@@ -13,7 +13,6 @@ namespace OrderFood.API.Controllers
             _foodBL = foodBL;
         }
 
-
         [HttpGet("getTopDiscount/{number}")]
         public IActionResult GetTopDiscount(int number)
         {

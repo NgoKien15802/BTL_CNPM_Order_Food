@@ -12,7 +12,5 @@ namespace OrderFood.Common.Models
         public Guid UserId { get; set; }
 
         public User? User { get; set; }
-
-        public DateTime PickupDate { get; set; }
     }
 }

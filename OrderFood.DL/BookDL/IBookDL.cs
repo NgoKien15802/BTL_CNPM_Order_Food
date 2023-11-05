@@ -2,7 +2,7 @@
 
 namespace OrderFood.DL
 {
-    public interface IFoodImageDL : IBaseDL<FoodImage>
+    public interface IBookDL : IBaseDL<Book>
     {
     }
 }

@@ -1,13 +1,7 @@
 ﻿using OrderFood.Common.Models;
 using OrderFood.DL;
-using OrderFood.DL.FoodImageDL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace OrderFood.BL.FoodImageBL
+namespace OrderFood.BL
 {
     public class FoodImageBL : BaseBL<FoodImage>, IFoodImageBL
     {

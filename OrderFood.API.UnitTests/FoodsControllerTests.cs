@@ -1,15 +1,9 @@
 ﻿using NSubstitute;
 using NUnit.Framework;
 using OrderFood.BL;
+using OrderFood.DL;
 using OrderFood.Common.DTOs;
 using OrderFood.Common.Models;
-using OrderFood.DL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderFood.API.UnitTests
 {
@@ -34,7 +28,6 @@ namespace OrderFood.API.UnitTests
                 FoodStatus = "best seller",
                 FoodType = "meat"
             };
-
 
             // kết quả mong đợi
             var expectedResult = new ServiceResponse<Food>();
@@ -146,7 +139,6 @@ namespace OrderFood.API.UnitTests
             Assert.AreEqual(expectedResult.Data, actualResult.Data);
         }
 
-
         /// <summary>
         ///     Test case lấy danh sách food
         /// </summary>
@@ -176,7 +168,6 @@ namespace OrderFood.API.UnitTests
                 FoodType = "meat"
             }
         };
-
 
             // kết quả mong đợi
             var expectedResult = new ServiceResponse<Food>();
@@ -213,7 +204,7 @@ namespace OrderFood.API.UnitTests
 
             // break dependency và fake data 
             var fakeFoodDL = Substitute.For<IBaseDL<Food>>();
-            fakeFoodDL.GetAllRecord().Returns((new List<Food>() { null}));
+            fakeFoodDL.GetAllRecord().Returns((new List<Food>() { null }));
 
             // Act
             var foodBL = new BaseBL<Food>(fakeFoodDL);
