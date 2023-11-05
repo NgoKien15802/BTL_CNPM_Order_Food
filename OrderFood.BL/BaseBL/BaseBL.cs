@@ -30,6 +30,7 @@ namespace OrderFood.BL
             else
             {
                 _serviceResponse.Success = false;
+                _serviceResponse.Data = 0;
             }
             return _serviceResponse;
         }
@@ -45,6 +46,7 @@ namespace OrderFood.BL
             else
             {
                 _serviceResponse.Success = false;
+                _serviceResponse.Data = records;
             }
             return _serviceResponse;
         }
@@ -63,6 +65,7 @@ namespace OrderFood.BL
             else
             {
                 _serviceResponse.Success = false;
+                _serviceResponse.Data = null;
             }
             return _serviceResponse;
         }
@@ -79,6 +82,7 @@ namespace OrderFood.BL
             else
             {
                 _serviceResponse.Success = false;
+                _serviceResponse.Data = null;
             }
             return _serviceResponse;
         }
@@ -93,6 +97,7 @@ namespace OrderFood.BL
             else
             {
                 _serviceResponse.Success = false;
+                _serviceResponse.Data = 0;
             }
             return _serviceResponse;
         }

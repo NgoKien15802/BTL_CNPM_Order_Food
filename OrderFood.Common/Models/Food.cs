@@ -11,7 +11,7 @@ namespace OrderFood.Common.Models
         [ForeignKey("Category")]
         public Guid CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
 
         public string FoodName { get; set; } = "";
 
