@@ -11,10 +11,10 @@ namespace OrderFood.Common.Models
         [ForeignKey("Food")]
         public Guid FoodId { get; set; }
 
-        public Food Food { get; set; }
+        public Food? Food { get; set; }
 
         public string Url { get; set; } = "";
 
-        public int Type { get; set; }
+        public int? Type { get; set; }
     }
 }
