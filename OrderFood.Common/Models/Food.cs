@@ -13,7 +13,7 @@ namespace OrderFood.Common.Models
 
         public Category Category { get; set; }
 
-        public string FoodName { get; set; }
+        public string FoodName { get; set; } = "";
 
         public float FoodStar { get; set; }
 
@@ -23,9 +23,9 @@ namespace OrderFood.Common.Models
 
         public string? FoodDesc { get; set; }
 
-        public string FoodStatus { get; set; }
+        public string FoodStatus { get; set; } = ""; 
 
-        public string FoodType { get; set; }
+        public string FoodType { get; set; } = "";
 
         public double Price { get; set; }
 

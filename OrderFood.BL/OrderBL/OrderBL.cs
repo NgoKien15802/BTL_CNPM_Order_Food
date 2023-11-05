@@ -1,13 +1,5 @@
-﻿using OrderFood.BL.RoleBL;
-using OrderFood.Common.Models;
+﻿using OrderFood.Common.Models;
 using OrderFood.DL;
-using OrderFood.DL.OrderDL;
-using OrderFood.DL.RoleDL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderFood.BL.OrderBL
 {
@@ -19,6 +11,5 @@ namespace OrderFood.BL.OrderBL
         {
             _orderDL = orderDL;
         }
-       
     }
 }

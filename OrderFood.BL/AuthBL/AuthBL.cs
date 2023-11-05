@@ -13,10 +13,9 @@ using System.Text;
 namespace OrderFood.BL
 {
     public class AuthBL : BaseBL<User>, IAuthBL
-    { 
+    {
         private readonly IAuthDL _authDL;
         private readonly IConfiguration _config;
-
         ServiceResponse<User> _serviceResponse = new ServiceResponse<User>();
 
         public AuthBL(IConfiguration configuration, IAuthDL authDL) : base(authDL)
@@ -27,10 +26,10 @@ namespace OrderFood.BL
 
         public bool checkRole(string jwt)
         {
-            string secretKey = _config.GetSection("AppSettings:Secret").Value; 
-
+            string secretKey = _config.GetSection("AppSettings:Secret").Value;
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secretKey);
+
             var tokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuerSigningKey = true,
@@ -46,11 +45,12 @@ namespace OrderFood.BL
             // Bây giờ bạn có thể truy cập các thông tin trong JWT Token thông qua principal.Claims
             foreach (var claim in principal.Claims)
             {
-                if(claim.Value == SD.AdminRole)
+                if (claim.Value == SD.AdminRole)
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -139,9 +139,9 @@ namespace OrderFood.BL
             // để xác thực, ủy quyền theo chuẩn cấu trúc của jwt 
             var claimList = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Email,user?.Email),
-                new Claim(JwtRegisteredClaimNames.Sub,user?.UserId.ToString()),
-                new Claim(JwtRegisteredClaimNames.GivenName,user?.FullName)
+                new Claim(JwtRegisteredClaimNames.Email,user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub,user.UserId.ToString()),
+                new Claim(JwtRegisteredClaimNames.GivenName,user.FullName)
             };
 
             // add roles

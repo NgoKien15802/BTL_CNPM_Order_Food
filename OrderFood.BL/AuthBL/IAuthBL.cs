@@ -11,6 +11,5 @@ namespace OrderFood.BL
         public Task<ServiceResponse<User>> Register(RegisterRequestDto registrationRequestDto);
 
         public bool checkRole(string jwt);
-
     }
 }

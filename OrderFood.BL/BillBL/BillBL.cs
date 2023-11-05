@@ -9,7 +9,6 @@ namespace OrderFood.BL
         private IBillDL _billDL;
         ServiceResponse<Bill> _serviceResponse = new ServiceResponse<Bill>();
 
-
         public BillBL(IBillDL billDL) : base(billDL)
         {
             _billDL = billDL;
@@ -17,7 +16,7 @@ namespace OrderFood.BL
 
         public ServiceResponse<Bill> GetBills()
         {
-            var records =  _billDL.GetBills();
+            var records = _billDL.GetBills();
             if (records != null)
             {
                 _serviceResponse.Success = true;

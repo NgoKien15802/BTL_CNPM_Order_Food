@@ -17,10 +17,7 @@ namespace OrderFood.DL
         public async Task<User> CheckLogin(LoginRequestDto loginRequestDto)
         {
             var user = _dbContext.Users.FirstOrDefault(u => u.Username.ToLower() == loginRequestDto.Username.ToLower());
-            if (user == null)
-            {
-                return null;
-            }
+
             return user;
         }
 
@@ -29,9 +26,10 @@ namespace OrderFood.DL
             var roles = await (from u in _dbContext.Users
                                join r in _dbContext.Roles on u.RoleId equals r.RoleId
                                where r.RoleId == user.RoleId
-                               select r.RoleName).ToListAsync(); 
-            return roles; 
+                               select r.RoleName).ToListAsync();
+            return roles;
         }
+
         public async Task<bool> CheckEmailExists(string email)
         {
             return await _dbContext.Users.AnyAsync(x => x.Email.ToLower().Trim() == email.ToLower().Trim());
@@ -62,8 +60,6 @@ namespace OrderFood.DL
                 return success;
             }
         }
-
-
 
         public async Task<string> CreateUser(User user, Guid roleId)
         {

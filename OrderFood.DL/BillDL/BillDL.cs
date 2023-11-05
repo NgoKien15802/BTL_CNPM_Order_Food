@@ -25,11 +25,14 @@ namespace OrderFood.DL
             {
                 var parameters = new DynamicParameters();
                 parameters.Add("@Id", recordId);
-                return await connection.QueryFirstOrDefaultAsync<Bill>(
+
+                var result = await connection.QueryFirstOrDefaultAsync<Bill>(
                     "GetBillStatus",
                     parameters,
                     commandType: CommandType.StoredProcedure
                 );
+
+                return result;
             }
         }
     }

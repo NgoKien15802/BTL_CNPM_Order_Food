@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrderFood.Common.Models
 {
@@ -14,7 +8,6 @@ namespace OrderFood.Common.Models
         [ForeignKey("Bill")]
         public Guid BillId { get; set; }
         public Bill Bill { get; set; }
-
 
         [ForeignKey("Food")]
         public Guid FoodId { get; set; }

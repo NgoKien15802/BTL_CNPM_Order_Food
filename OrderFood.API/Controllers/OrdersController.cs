@@ -1,6 +1,4 @@
 ﻿using OrderFood.BL;
-using OrderFood.BL.OrderBL;
-using OrderFood.BL.RoleBL;
 using OrderFood.Common.Models;
 
 namespace OrderFood.API.Controllers

@@ -13,7 +13,7 @@ namespace OrderFood.Common.Models
 
         public Food Food { get; set; }
 
-        public string Url { get; set; }
+        public string Url { get; set; } = "";
 
         public int Type { get; set; }
     }

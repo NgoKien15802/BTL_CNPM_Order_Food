@@ -13,6 +13,5 @@ namespace OrderFood.BL
         public ServiceResponse<T> Add(T record);
 
         public ServiceResponse<T> Update(T record);
-
     }
 }

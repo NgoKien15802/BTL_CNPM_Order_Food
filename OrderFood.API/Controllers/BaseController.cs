@@ -23,8 +23,6 @@ namespace OrderFood.API.Controllers
 
         #endregion
 
-
-
         [HttpGet("GetAllRecord")]
         public async Task<IActionResult> GetAllRecord(string? recordId = "")
         {
@@ -47,13 +45,11 @@ namespace OrderFood.API.Controllers
             return Ok(resultResponse);
         }
 
-
-
         [HttpPost("addRecord")]
         public IActionResult Add([FromBody] T record)
         {
             var resultResponse = _baseBL.Add(record);
-            if (resultResponse.Success == false)
+            if (!resultResponse.Success)
             {
                 return BadRequest(resultResponse);
             }
@@ -64,13 +60,12 @@ namespace OrderFood.API.Controllers
         public IActionResult Update([FromBody] T record)
         {
             var resultResponse = _baseBL.Update(record);
-            if (resultResponse.Success == false)
+            if (!resultResponse.Success)
             {
                 return BadRequest(resultResponse);
             }
             return Ok(resultResponse);
         }
-
 
         [HttpDelete("deleteById/{recordId}")]
         public async Task<IActionResult> Delete(Guid recordId)
@@ -82,9 +77,5 @@ namespace OrderFood.API.Controllers
             }
             return Ok(resultResponse);
         }
-
-
-
-
     }
 }

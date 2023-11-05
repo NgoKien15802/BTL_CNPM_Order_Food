@@ -5,7 +5,7 @@
         /// <summary>
         ///     Mã token
         /// </summary>
-        public string Token { get; set; }
+        public string Token { get; set; } = "";
 
         /// <summary>
         ///     Ngày tạo
