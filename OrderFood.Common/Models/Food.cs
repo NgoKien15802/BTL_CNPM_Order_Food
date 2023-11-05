@@ -36,5 +36,8 @@ namespace OrderFood.Common.Models
 
         [NotMapped]
         public string? Url { get; set; }
+
+        // 1 - Special Offer, 2 - Limited Offer
+        public int? FoodDiscountType { get; set; }
     }
 }

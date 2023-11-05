@@ -16,5 +16,6 @@ namespace OrderFood.Common.Models
         public string Url { get; set; } = "";
 
         public int? Type { get; set; }
+
     }
 }
