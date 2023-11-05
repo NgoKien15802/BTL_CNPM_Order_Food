@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFood.API", "OrderFood.API\OrderFood.API.csproj", "{D992CE13-932B-4312-B84A-D6B178959CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderFood.API", "OrderFood.API\OrderFood.API.csproj", "{D992CE13-932B-4312-B84A-D6B178959CA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFood.BL", "OrderFood.BL\OrderFood.BL.csproj", "{7A0AFD95-D946-4B08-92EA-BBD920DDF085}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderFood.BL", "OrderFood.BL\OrderFood.BL.csproj", "{7A0AFD95-D946-4B08-92EA-BBD920DDF085}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFood.Common", "OrderFood.Common\OrderFood.Common.csproj", "{80F6E283-2A6E-42CE-A5D9-827B0B18DDFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderFood.Common", "OrderFood.Common\OrderFood.Common.csproj", "{80F6E283-2A6E-42CE-A5D9-827B0B18DDFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFood.DL", "OrderFood.DL\OrderFood.DL.csproj", "{AA92C8CE-064B-4D77-A9B1-5743E4D5C668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderFood.DL", "OrderFood.DL\OrderFood.DL.csproj", "{AA92C8CE-064B-4D77-A9B1-5743E4D5C668}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderFood.API.UnitTests", "OrderFood.API.UnitTests\OrderFood.API.UnitTests.csproj", "{578C6BBD-9BA2-484E-9D87-553007A4E7F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AA92C8CE-064B-4D77-A9B1-5743E4D5C668}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA92C8CE-064B-4D77-A9B1-5743E4D5C668}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA92C8CE-064B-4D77-A9B1-5743E4D5C668}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578C6BBD-9BA2-484E-9D87-553007A4E7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578C6BBD-9BA2-484E-9D87-553007A4E7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578C6BBD-9BA2-484E-9D87-553007A4E7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578C6BBD-9BA2-484E-9D87-553007A4E7F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
