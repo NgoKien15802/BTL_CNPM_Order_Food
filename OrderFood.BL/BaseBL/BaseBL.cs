@@ -72,6 +72,7 @@ namespace OrderFood.BL
             var records = await _baseDL.GetById(recordId);
             if (records != null)
             {
+                
                 _serviceResponse.Success = true;
                 _serviceResponse.Data = records;
             }
