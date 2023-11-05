@@ -2,7 +2,7 @@
 
 namespace OrderFood.BL
 {
-    public interface IFoodImageBL : IBaseBL<FoodImage>
+    public interface IBookBL : IBaseBL<Book>
     {
     }
 }

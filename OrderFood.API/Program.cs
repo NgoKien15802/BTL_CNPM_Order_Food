@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OrderFood.BL;
-using OrderFood.BL.FoodImageBL;
-using OrderFood.BL.OrderBL;
 using OrderFood.DL;
-using OrderFood.DL.FoodImageDL;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +26,9 @@ builder.Services.AddScoped<IOrderBL, OrderBL>();
 builder.Services.AddScoped<IOrderDL, OrderDL>();
 builder.Services.AddScoped<IFoodImageBL, FoodImageBL>();
 builder.Services.AddScoped<IFoodImageDL, FoodImageDL>();
+builder.Services.AddScoped<IBookBL, BookBL>();
+builder.Services.AddScoped<IBookDL, BookDL>();
+
 // Add DB context
 builder.Services.AddDbContext<AppDBContext>(option =>
 {
