@@ -15,6 +15,7 @@ namespace OrderFood.Common.Models
 
         public string Url { get; set; } = "";
 
+        // 0 - Sub image, 1 - Avatar
         public int Type { get; set; }
     }
 }

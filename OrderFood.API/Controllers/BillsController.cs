@@ -16,12 +16,12 @@ namespace OrderFood.API.Controllers
         [HttpGet("getBills")]
         public IActionResult GetBills()
         {
-            var loginResponse = _billBL.GetBills();
-            if (!loginResponse.Success)
+            var response = _billBL.GetBills();
+            if (!response.Success)
             {
-                return BadRequest(loginResponse);
+                return BadRequest(response);
             }
-            return Ok(loginResponse);
+            return Ok(response);
         }
     }
 }
