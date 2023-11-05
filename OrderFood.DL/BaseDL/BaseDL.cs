@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using BCrypt.Net;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Data;
@@ -43,14 +44,21 @@ namespace OrderFood.DL
                     foreach (var property in properties)
                     {
                         var propertyName = property.Name;
-                        var propertyValue = property.GetValue(record);
+                        dynamic propertyValue;
+                        if (_tableName == "User" && propertyName.ToLower() == "passwordhash")
+                        {
+                            propertyValue = BCrypt.Net.BCrypt.HashPassword(property.GetValue(record).ToString());
+                        }
+                        else
+                        {
+                            propertyValue = property.GetValue(record);
+                        }
                         if (propertyValue != null)
                         {
                             parameters.Add($"@{propertyName}", propertyValue);
                         }
                     }
 
-                    // thực hiện câu lệnh sql 
                     int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
 
                     return numberAffected;
