@@ -7,11 +7,11 @@ namespace OrderFood.Common.Models
 
         [ForeignKey("Bill")]
         public Guid BillId { get; set; }
-        public Bill Bill { get; set; }
+        public Bill? Bill { get; set; }
 
         [ForeignKey("Food")]
         public Guid FoodId { get; set; }
-        public Food Food { get; set; }
+        public Food? Food { get; set; }
 
         public int Quantity { get; set; }
 
