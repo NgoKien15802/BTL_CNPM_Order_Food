@@ -5,7 +5,6 @@ namespace OrderFood.BL
 {
     public class CategoriesBL : BaseBL<Category>, ICategoriesBL
     {
-
         private ICategoriesDL _categoriesDL;
 
         public CategoriesBL(ICategoriesDL categoriesDL) : base(categoriesDL)
