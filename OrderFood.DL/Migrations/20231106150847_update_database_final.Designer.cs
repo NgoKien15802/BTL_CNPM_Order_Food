@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OrderFood.DL;
 
@@ -11,9 +12,10 @@ using OrderFood.DL;
 namespace OrderFood.DL.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231106150847_update_database_final")]
+    partial class update_database_final
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,53 +86,6 @@ namespace OrderFood.DL.Migrations
                     b.HasIndex("FoodId");
 
                     b.ToTable("BillDetails");
-                });
-
-            modelBuilder.Entity("OrderFood.Common.Models.Book", b =>
-                {
-                    b.Property<Guid>("BookID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ClientEmail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClientPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NumberOfPeople")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfTable")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PickupDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("BookID");
-
-                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("OrderFood.Common.Models.Cart", b =>
