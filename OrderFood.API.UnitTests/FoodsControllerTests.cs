@@ -193,7 +193,7 @@ namespace OrderFood.API.UnitTests
         /// </summary>
         [Test]
         [Category("Short")]
-        public void GetFoodAll_ExistFood_ReturnsFailure()
+        public void GetFoodAll_ExistsFood_ReturnsFailure()
         {
             // Arrange: Fake data đầu vào
 
