@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OrderFood.BL;
+using OrderFood.Common.DTOs;
 using OrderFood.Common.Models;
 
 namespace OrderFood.API.Controllers
@@ -22,6 +23,28 @@ namespace OrderFood.API.Controllers
                 return BadRequest(response);
             }
             return Ok(response);
+        }
+
+        [HttpPost("addNewFood")]
+        public IActionResult AddNewFood([FromBody] FoodPayload foodPayload)
+        {
+            var resultResponse = _foodBL.AddNewFood(foodPayload);
+            if (!resultResponse.Success)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
+        }
+
+        [HttpPut("updateFood")]
+        public IActionResult UpdateFood([FromBody] FoodPayload foodPayload)
+        {
+            var resultResponse = _foodBL.UpdateFood(foodPayload);
+            if (!resultResponse.Success)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
         }
     }
 }

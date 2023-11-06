@@ -8,6 +8,7 @@ namespace OrderFood.BL
     {
         private IFoodDL _foodDL;
         ServiceResponse<TopDiscountDto> _serviceResponse = new ServiceResponse<TopDiscountDto>();
+        ServiceResponse<FoodPayload> _serviceResponseFood = new ServiceResponse<FoodPayload>();
 
         public FoodBL(IFoodDL foodDL) : base(foodDL)
         {
@@ -28,6 +29,39 @@ namespace OrderFood.BL
                 _serviceResponse.Success = false;
             }
             return _serviceResponse;
+        }
+
+
+        public ServiceResponse<FoodPayload> AddNewFood(FoodPayload foodPayload)
+        {
+            int numberAffected = _foodDL.AddNewFood(foodPayload);
+            if (numberAffected > 0)
+            {
+                _serviceResponseFood.Success = true;
+                _serviceResponseFood.Data = 1;
+            }
+            else
+            {
+                _serviceResponseFood.Success = false;
+                _serviceResponseFood.Data = 0;
+            }
+            return _serviceResponseFood;
+        }
+
+        public ServiceResponse<FoodPayload> UpdateFood(FoodPayload foodPayload)
+        {
+            int numberAffected = _foodDL.UpdateFood(foodPayload);
+            if (numberAffected > 0)
+            {
+                _serviceResponseFood.Success = true;
+                _serviceResponseFood.Data = 1;
+            }
+            else
+            {
+                _serviceResponseFood.Success = false;
+                _serviceResponseFood.Data = 0;
+            }
+            return _serviceResponseFood;
         }
     }
 }
