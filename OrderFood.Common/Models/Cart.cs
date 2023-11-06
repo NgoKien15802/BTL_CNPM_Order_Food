@@ -1,13 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrderFood.Common.Models
 {
     public class Cart : BaseModel
     {
-        [ForeignKey("Order")]
-        public Guid OrderId { get; set; }
+        [Key]
+        public Guid CartId { get; set; }
 
-        public Order Order { get; set; }
+        [ForeignKey("User")]
+        public Guid UserId { get; set; }
+        
+        public User User { get; set; }
 
         [ForeignKey("Food")]
         public Guid FoodId { get; set; }

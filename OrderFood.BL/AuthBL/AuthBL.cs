@@ -45,7 +45,7 @@ namespace OrderFood.BL
             // Bây giờ bạn có thể truy cập các thông tin trong JWT Token thông qua principal.Claims
             foreach (var claim in principal.Claims)
             {
-                if (claim.Value == SD.AdminRole)
+                if (claim.Value == SD.AdminRole.ToLower())
                 {
                     return true;
                 }
