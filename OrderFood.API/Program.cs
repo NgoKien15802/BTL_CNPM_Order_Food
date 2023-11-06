@@ -28,6 +28,8 @@ builder.Services.AddScoped<IFoodImageBL, FoodImageBL>();
 builder.Services.AddScoped<IFoodImageDL, FoodImageDL>();
 builder.Services.AddScoped<IBookBL, BookBL>();
 builder.Services.AddScoped<IBookDL, BookDL>();
+builder.Services.AddScoped<ICartBL, CartBL>();
+builder.Services.AddScoped<ICartDL, CartDL>();
 
 // Add DB context
 builder.Services.AddDbContext<AppDBContext>(option =>
