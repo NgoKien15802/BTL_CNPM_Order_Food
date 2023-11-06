@@ -27,8 +27,8 @@ namespace OrderFood.Common.Models
 
         public string? Method { get; set; }
 
-        public int? Discount { get; set; }
+        public float? Discount { get; set; }
 
-        public int? Delivery { get; set; }
+        public float? Delivery { get; set; }
     }
 }

@@ -7,8 +7,7 @@ namespace OrderFood.Common.Models
         [Key]
         public Guid PaymentId { get; set; } = Guid.NewGuid();
 
-        public DateTime Date { get; set; }
-
+        // 0 - Thanh toán trực tiếp
         public int Type { get; set; }
     }
 }

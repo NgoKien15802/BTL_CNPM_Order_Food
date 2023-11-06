@@ -21,6 +21,7 @@ namespace OrderFood.DL
         public DbSet<Category> Categorys { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<FoodImage> FoodImages { get; set; }
+        public DbSet<Book> Books { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
