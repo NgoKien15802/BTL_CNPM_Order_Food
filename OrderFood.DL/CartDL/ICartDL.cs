@@ -10,5 +10,7 @@ namespace OrderFood.DL
         public Task<IEnumerable<CartResponse>> GetCartInfo(Guid userId);
 
         public int RemoveAll(Guid userId);
+
+        public int UpdateCart(CartPayload cartPayload);
     }
 }

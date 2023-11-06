@@ -46,5 +46,16 @@ namespace OrderFood.API.Controllers
             }
             return Ok(resultResponse);
         }
+
+        [HttpPut("updateCart")]
+        public IActionResult UpdateCart([FromBody] CartPayload cartPayload)
+        {
+            var resultResponse = _cartBL.UpdateCart(cartPayload);
+            if (!resultResponse.Success)
+            {
+                return BadRequest(resultResponse);
+            }
+            return Ok(resultResponse);
+        }
     }
 }

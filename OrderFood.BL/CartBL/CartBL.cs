@@ -63,5 +63,21 @@ namespace OrderFood.BL
             }
             return _servicePayload;
         }
+
+        public ServiceResponse<CartPayload> UpdateCart(CartPayload cartPayload)
+        {
+            int numberAffected = _cartDL.UpdateCart(cartPayload);
+            if (numberAffected > 0)
+            {
+                _servicePayload.Success = true;
+                _servicePayload.Data = 1;
+            }
+            else
+            {
+                _servicePayload.Success = false;
+                _servicePayload.Data = 0;
+            }
+            return _servicePayload;
+        }
     }
 }

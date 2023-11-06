@@ -10,5 +10,7 @@ namespace OrderFood.BL
         public Task<ServiceResponse<CartResponse>> GetCartInfo(Guid userId);
 
         public ServiceResponse<CartPayload> RemoveAll(Guid userId);
+
+        public ServiceResponse<CartPayload> UpdateCart(CartPayload cartPayload);
     }
 }

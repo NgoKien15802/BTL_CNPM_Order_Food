@@ -90,5 +90,31 @@ namespace OrderFood.DL
                 throw;
             }
         }
+
+        public int UpdateCart(CartPayload cartPayload)
+        {
+            try
+            {
+                using (var connection = GetOpenConnection())
+                {
+                    string storedProcedureName = "UpdateCart";
+                    var parameters = new DynamicParameters();
+
+                    parameters.Add("@CartId", cartPayload.CartId);
+                    parameters.Add("@FoodId", cartPayload.FoodId);
+                    parameters.Add("@UserId", cartPayload.UserId);
+                    parameters.Add("@Quantity", cartPayload.Quantity);
+
+                    int numberAffected = connection.Execute(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
+                    return numberAffected;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+                throw;
+            }
+        }
     }
 }
